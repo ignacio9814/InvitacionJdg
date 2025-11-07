@@ -23,7 +23,7 @@ const createGoogleCalendarLink = () => {
   
   // Formato: YYYYMMDDTHHMMSSZ
   const startDate = `${year}1204T220000Z`; // 4 de diciembre, 19:00 ART = 22:00 UTC
-  const endDate = `${year}1205T000000Z`; // 5 de diciembre, 21:00 ART = 00:00 UTC (día siguiente)
+  const endDate = `${year}1205T010000Z`; // termina a las 22:00 ART = 01:00 UTC// 5 de diciembre, 21:00 ART = 00:00 UTC (día siguiente)
   
   const params = new URLSearchParams({
     action: 'TEMPLATE',
