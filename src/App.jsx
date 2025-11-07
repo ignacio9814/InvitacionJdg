@@ -317,8 +317,7 @@ function App() {
           {/* Header */}
           <header className="main-header">
             <h1 className="main-title">
-              <span className="title-line">CRECEMOS</span>
-              <span className="title-line">PARA ESTAR</span>
+              <span className="title-line">CRECEMOS PARA ESTAR</span>
               <span className="title-line highlight">MÁS CERCA DE VOS.</span>
             </h1>
           </header>
