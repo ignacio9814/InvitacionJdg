@@ -98,6 +98,7 @@ function App() {
       const timeCard = timeCardRef.current;
       
       if (wheelLoading && dateTimeSection && dateCard && timeCard) {
+        const cards = [dateCard, timeCard];
         // Referencia al SVG de la rueda para la rotación
         const wheelSvg = wheelLoading.querySelector('.wheel-svg');
         
@@ -121,7 +122,7 @@ function App() {
           });
         }
         
-        gsap.set([dateCard, timeCard], {
+        gsap.set(cards, {
           opacity: 0,
           scale: 0.9,
           y: 20,
@@ -248,11 +249,11 @@ function App() {
             visibility: 'hidden'
           }, '-=0.5')
           // FASE 4: Revelar las tarjetas desde atrás del humo (después de que se desvanezca)
-          .set([dateCard, timeCard], {
+          .set(cards, {
             visibility: 'visible',
             zIndex: 9 // Por encima del humo cuando aparezcan
           }, '+=0.3') // Esperar un poco para que el humo se desvanezca
-          .to([dateCard, timeCard], {
+          .to(cards, {
             opacity: 1,
             scale: 1,
             y: 0,
@@ -324,7 +325,7 @@ function App() {
           {/* Subtitle */}
           <section className="subtitle-section">
             <p className="subtitle">
-              Te invitamos a la inauguración de nuestra <strong>NUEVA SUCURSAL</strong>.
+              Te invitamos a la inauguración de nuestra <strong>NUEVA SUCURSAL EN CONCEPCIÓN</strong>.
             </p>
             <p className="subtitle-text">
               Para continuar brindando el servicio, la calidad y la confianza que nos distinguen.
@@ -499,22 +500,17 @@ function App() {
               href={createGoogleCalendarLink()} 
               target="_blank" 
               rel="noopener noreferrer"
-              style={{ textDecoration: 'none', display: 'block' }}
+              className="info-card-wrapper"
             >
               <InfoCard ref={dateCardRef} className="date-card">
                 <span className="emoji-white">📅</span> JUEVES 4 DE DICIEMBRE
               </InfoCard>
             </a>
-            <a 
-              href={createGoogleCalendarLink()} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              style={{ textDecoration: 'none', display: 'block' }}
-            >
-              <InfoCard ref={timeCardRef} className="time-card">
+            <div className="info-card-wrapper">
+              <InfoCard ref={timeCardRef} className="time-card" interactive={false}>
                 <span className="emoji-white">🕒</span> 19:00 HS
               </InfoCard>
-            </a>
+            </div>
           </section>
 
           {/* Action Buttons */}
@@ -528,7 +524,7 @@ function App() {
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
               </svg>
-              <span className="btn-text">Tocar para ver ubicación</span>
+              <span className="btn-text">Tocar para ver ubicación en Concepción</span>
             </a>
             <a 
               href="https://docs.google.com/forms/d/1llA_nhIqJKaJL9xOvp5rLFv-ZRnTSFdoeHD_g4a98Zg/viewform?edit_requested=true" 

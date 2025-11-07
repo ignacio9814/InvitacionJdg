@@ -48,6 +48,14 @@
     z-index: 3; /* Inicialmente detrás del humo (z-index: 8) */
 }
 
+.info-card-modern.info-card-non-interactive {
+    cursor: default;
+}
+
+.info-card-modern.info-card-non-interactive .info-card-ripple {
+    display: none;
+}
+
 /* Overlay sutil para profundidad - acorde al diseño azul */
 .info-card-modern::before {
     content: '';

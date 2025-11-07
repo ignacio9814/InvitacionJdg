@@ -359,16 +359,18 @@ p, span, h1, h2, h3, h4, h5, h6 {
     position: relative;
     z-index: 20;
     width: 100%;
-    height: 100vh;
-    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--spacing-lg);
+    padding: calc(env(safe-area-inset-top, 0) + var(--spacing-lg)) var(--spacing-lg) calc(env(safe-area-inset-bottom, 0) + var(--spacing-lg));
     box-sizing: border-box;
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
+    scroll-padding-top: calc(env(safe-area-inset-top, 0) + var(--spacing-lg));
 }
 
 /* Scrollbar personalizado para webkit */
@@ -576,17 +578,16 @@ p, span, h1, h2, h3, h4, h5, h6 {
     }
     
     .container {
-        padding: var(--spacing-lg);
-        align-items: center;
-        justify-content: center;
-        padding-top: var(--spacing-xl);
-        padding-bottom: var(--spacing-xl);
+        padding: calc(env(safe-area-inset-top, 0) + var(--spacing-2xl)) var(--spacing-lg) calc(env(safe-area-inset-bottom, 0) + var(--spacing-xl));
+        align-items: flex-start;
+        justify-content: flex-start;
         min-height: 100vh;
         min-height: 100dvh;
     }
     
     .invitation-content {
         max-width: 100%;
+        margin: var(--spacing-lg) 0 var(--spacing-xl);
         gap: var(--spacing-2xl);
         padding: var(--spacing-2xl) var(--spacing-lg);
         justify-content: flex-start;
@@ -669,19 +670,18 @@ p, span, h1, h2, h3, h4, h5, h6 {
     }
     
     .container {
-        padding: var(--spacing-md);
-        padding-top: var(--spacing-lg);
-        padding-bottom: var(--spacing-lg);
+        padding: calc(env(safe-area-inset-top, 0) + var(--spacing-xl)) var(--spacing-md) calc(env(safe-area-inset-bottom, 0) + var(--spacing-lg));
         min-height: 100vh;
         min-height: 100dvh;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-start;
+        justify-content: flex-start;
     }
     
     .invitation-content {
         gap: var(--spacing-xl);
         padding: var(--spacing-xl) var(--spacing-md);
         justify-content: flex-start;
+        margin: var(--spacing-lg) 0 var(--spacing-xl);
     }
     
     .main-header {
@@ -776,10 +776,11 @@ p, span, h1, h2, h3, h4, h5, h6 {
     }
     
     .container {
-        padding: var(--spacing-xs);
+        padding: calc(env(safe-area-inset-top, 0) + var(--spacing-sm)) var(--spacing-xs) calc(env(safe-area-inset-bottom, 0) + var(--spacing-sm));
         min-height: 100vh;
         min-height: 100dvh;
         align-items: stretch;
+        justify-content: flex-start;
     }
     
     .invitation-content {
@@ -788,6 +789,7 @@ p, span, h1, h2, h3, h4, h5, h6 {
         min-height: calc(100vh - var(--spacing-xs) * 2);
         min-height: calc(100dvh - var(--spacing-xs) * 2);
         justify-content: space-between;
+        margin: var(--spacing-md) 0 var(--spacing-lg);
     }
     
     .main-title {
@@ -916,8 +918,8 @@ p, span, h1, h2, h3, h4, h5, h6 {
     /* Las animaciones se manejan con GSAP en App.jsx */
 }
 
-/* Enlaces de las tarjetas de fecha y hora */
-.date-time-section > a {
+/* Contenedor de las tarjetas de fecha, hora y ubicación */
+.date-time-section > .info-card-wrapper {
     text-decoration: none;
     display: flex;
     justify-content: center;
@@ -1788,10 +1790,8 @@ p, span, h1, h2, h3, h4, h5, h6 {
     height: auto;
     object-fit: contain;
     filter: 
-        drop-shadow(0 0 2px rgba(255, 255, 255, 0.9))
-        drop-shadow(0 0 4px rgba(255, 255, 255, 0.8))
-        drop-shadow(0 0 6px rgba(255, 255, 255, 0.7))
-        drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        drop-shadow(0 4px 12px rgba(0, 0, 0, 0.35))
+        drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
     position: relative;
     z-index: 2;
     /* Logo estático sin animaciones */
