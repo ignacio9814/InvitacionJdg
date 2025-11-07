@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { InfoCard } from './components/InfoCard';
 import './App.css';
-import logoJdg from '../assets/images/logo-jdg (1).png';
+import logoJdg from '../assets/images/logo-jdg-new.png';
 
 // Función para generar enlace de Google Calendar
 const createGoogleCalendarLink = () => {
