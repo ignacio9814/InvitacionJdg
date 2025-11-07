@@ -27,7 +27,7 @@ const createGoogleCalendarLink = () => {
   
   const params = new URLSearchParams({
     action: 'TEMPLATE',
-    text: 'Inauguración JDG',
+    text: 'Inauguración JDG CONCEPCIÓN',
     dates: `${startDate}/${endDate}`,
     details: 'Inauguración de JDG Neumáticos',
     location: 'JDG Neumáticos'
