@@ -919,10 +919,13 @@ p, span, h1, h2, h3, h4, h5, h6 {
 /* Enlaces de las tarjetas de fecha y hora */
 .date-time-section > a {
     text-decoration: none;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     max-width: 280px;
     color: inherit;
+    margin: 0 auto;
 }
 
 /* Contenedor de huellas de neumático */
@@ -1415,176 +1418,44 @@ p, span, h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--spacing-md);
-    padding: var(--spacing-xl) var(--spacing-3xl);
-    border-radius: var(--radius-lg);
+    gap: var(--spacing-sm);
+    padding: var(--spacing-lg) var(--spacing-2xl);
+    border-radius: 16px;
     text-decoration: none;
     font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-size: clamp(1.1rem, 4.5vw, 1.3rem);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    font-weight: 600;
+    font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+    letter-spacing: 0.02em;
+    text-transform: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     box-shadow: 
-        0 8px 24px rgba(0, 51, 102, 0.5),
-        0 4px 12px rgba(0, 0, 0, 0.4),
-        0 0 0 2px rgba(255, 215, 0, 0.3),
-        inset 0 2px 0 rgba(255, 255, 255, 0.15),
-        inset 0 -2px 0 rgba(0, 0, 0, 0.2);
-    border: 2px solid rgba(255, 215, 0, 0.5);
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        0 2px 6px rgba(0, 0, 0, 0.1);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
-    min-height: 68px;
-    text-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.5),
-        0 0 10px rgba(255, 255, 255, 0.3);
+    min-height: 56px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 100%;
     font-feature-settings: "kern" 1;
     background: linear-gradient(
         135deg,
-        rgba(0, 51, 102, 1) 0%,
-        rgba(0, 71, 133, 1) 50%,
-        rgba(0, 51, 102, 1) 100%
+        rgba(0, 51, 102, 0.95) 0%,
+        rgba(0, 71, 133, 0.95) 50%,
+        rgba(0, 51, 102, 0.95) 100%
     );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: var(--color-white);
-    background-image: 
-        linear-gradient(
-            90deg,
-            transparent 0%,
-            rgba(255, 255, 255, 0.1) 25%,
-            rgba(255, 255, 255, 0.3) 50%,
-            rgba(255, 255, 255, 0.1) 75%,
-            transparent 100%
-        ),
-        linear-gradient(
-            135deg,
-            rgba(0, 51, 102, 1) 0%,
-            rgba(0, 71, 133, 1) 50%,
-            rgba(0, 51, 102, 1) 100%
-        );
-    background-size: 400% 100%, 100% 100%;
-    background-position: -200% center, center;
-    animation: btnMetallic 5s ease-in-out infinite;
     opacity: 0; /* Oculto inicialmente, se mostrará después del video */
     visibility: hidden; /* Se controla con GSAP */
+    will-change: transform, opacity, box-shadow;
 }
 
-/* Efecto de iluminación animado en botones - más intenso */
-.btn::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: radial-gradient(
-        circle,
-        rgba(255, 215, 0, 0.6) 0%,
-        rgba(255, 215, 0, 0.3) 30%,
-        rgba(255, 255, 255, 0.2) 50%,
-        transparent 70%
-    );
-    transform: translate(-50%, -50%);
-    transition: width 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                height 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    opacity: 0;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.btn:hover::after {
-    width: 400px;
-    height: 400px;
-    opacity: 1;
-}
-
-/* Animación metalizada - efecto cromado/brillo metálico */
-@keyframes btnMetallic {
-    0% {
-        background-position: -200% center, center;
-        filter: brightness(1) contrast(1) saturate(1);
-        box-shadow: 
-            0 8px 24px rgba(0, 51, 102, 0.4),
-            0 4px 12px rgba(0, 0, 0, 0.3),
-            0 0 0 1.5px rgba(255, 215, 0, 0.25),
-            inset 0 2px 0 rgba(255, 255, 255, 0.12),
-            inset 0 -2px 0 rgba(0, 0, 0, 0.15),
-            0 0 0 rgba(255, 255, 255, 0);
-    }
-    50% {
-        background-position: 200% center, center;
-        filter: brightness(1.15) contrast(1.1) saturate(1.2);
-        box-shadow: 
-            0 10px 28px rgba(0, 51, 102, 0.5),
-            0 5px 14px rgba(0, 0, 0, 0.35),
-            0 0 0 2px rgba(255, 215, 0, 0.5),
-            0 0 20px rgba(255, 255, 255, 0.3),
-            inset 0 2px 0 rgba(255, 255, 255, 0.25),
-            inset 0 -2px 0 rgba(0, 0, 0, 0.15),
-            0 0 30px rgba(255, 255, 255, 0.2);
-    }
-    100% {
-        background-position: -200% center, center;
-        filter: brightness(1) contrast(1) saturate(1);
-        box-shadow: 
-            0 8px 24px rgba(0, 51, 102, 0.4),
-            0 4px 12px rgba(0, 0, 0, 0.3),
-            0 0 0 1.5px rgba(255, 215, 0, 0.25),
-            inset 0 2px 0 rgba(255, 255, 255, 0.12),
-            inset 0 -2px 0 rgba(0, 0, 0, 0.15),
-            0 0 0 rgba(255, 255, 255, 0);
-    }
-}
-
-/* Animación metalizada para botones amarillos */
-@keyframes btnMetallicGold {
-    0% {
-        background-position: -200% center, center;
-        filter: brightness(1) contrast(1) saturate(1);
-        box-shadow: 
-            0 8px 24px rgba(255, 184, 0, 0.35),
-            0 4px 12px rgba(0, 0, 0, 0.3),
-            0 0 0 1.5px rgba(255, 215, 0, 0.4),
-            inset 0 2px 0 rgba(255, 255, 255, 0.15),
-            inset 0 -2px 0 rgba(0, 0, 0, 0.15),
-            0 0 0 rgba(255, 255, 255, 0);
-    }
-    50% {
-        background-position: 200% center, center;
-        filter: brightness(1.2) contrast(1.15) saturate(1.3);
-        box-shadow: 
-            0 12px 32px rgba(255, 184, 0, 0.5),
-            0 6px 16px rgba(0, 0, 0, 0.35),
-            0 0 0 2.5px rgba(255, 215, 0, 0.7),
-            0 0 25px rgba(255, 255, 255, 0.4),
-            inset 0 2px 0 rgba(255, 255, 255, 0.3),
-            inset 0 -2px 0 rgba(0, 0, 0, 0.15),
-            0 0 40px rgba(255, 215, 0, 0.3);
-    }
-    100% {
-        background-position: -200% center, center;
-        filter: brightness(1) contrast(1) saturate(1);
-        box-shadow: 
-            0 8px 24px rgba(255, 184, 0, 0.35),
-            0 4px 12px rgba(0, 0, 0, 0.3),
-            0 0 0 1.5px rgba(255, 215, 0, 0.4),
-            inset 0 2px 0 rgba(255, 255, 255, 0.15),
-            inset 0 -2px 0 rgba(0, 0, 0, 0.15),
-            0 0 0 rgba(255, 255, 255, 0);
-    }
-}
-
-.btn-text,
-.btn-icon {
-    position: relative;
-    z-index: 1;
-}
-
+/* Efecto sutil de brillo al hover/touch */
 .btn::before {
     content: "";
     position: absolute;
@@ -1595,172 +1466,203 @@ p, span, h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(
         90deg,
         transparent,
-        rgba(255, 215, 0, 0.4),
-        rgba(255, 255, 255, 0.3),
-        rgba(255, 215, 0, 0.4),
+        rgba(255, 255, 255, 0.15),
         transparent
     );
-    transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: left 0.5s ease;
     z-index: 1;
+    pointer-events: none;
 }
 
-.btn:hover::before {
+.btn-text,
+.btn-icon {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.2s ease;
+}
+
+/* Hover y touch - efectos sutiles y elegantes */
+.btn:hover::before,
+.btn:active::before {
     left: 100%;
 }
 
 .btn:hover,
-.btn:active {
-    transform: scale(1.02);
+.btn:focus-visible {
+    transform: translateY(-2px);
     box-shadow: 
-        0 14px 36px rgba(0, 51, 102, 0.6),
-        0 7px 18px rgba(0, 0, 0, 0.45),
-        0 0 0 3px rgba(255, 215, 0, 0.7),
-        0 0 30px rgba(255, 215, 0, 0.5),
-        0 0 50px rgba(255, 215, 0, 0.25),
-        inset 0 2px 0 rgba(255, 255, 255, 0.25),
-        inset 0 -2px 0 rgba(0, 0, 0, 0.18);
-    border-color: rgba(255, 215, 0, 0.9);
+        0 6px 16px rgba(0, 0, 0, 0.2),
+        0 3px 8px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
     background: linear-gradient(
         135deg,
-        rgba(0, 71, 133, 1) 0%,
-        rgba(0, 102, 204, 1) 50%,
-        rgba(0, 71, 133, 1) 100%
+        rgba(0, 71, 133, 0.98) 0%,
+        rgba(0, 102, 204, 0.98) 50%,
+        rgba(0, 71, 133, 0.98) 100%
     );
-    animation: btnMetallic 4s ease-in-out infinite;
-    filter: brightness(1.1) contrast(1.05);
-}
-
-.btn:hover .btn-icon,
-.btn:active .btn-icon {
-    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7)) 
-            brightness(1.2) contrast(1.1);
-    transition: filter 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.btn:hover .btn-text,
-.btn:active .btn-text {
-    text-shadow: 
-        0 2px 6px rgba(0, 0, 0, 0.6),
-        0 0 15px rgba(255, 255, 255, 0.5),
-        0 0 25px rgba(255, 215, 0, 0.4);
 }
 
 .btn:active {
-    transform: scale(0.98) !important;
+    transform: translateY(0) scale(0.98);
     box-shadow: 
-        0 4px 12px rgba(0, 0, 0, 0.3),
-        0 2px 6px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+        0 2px 8px rgba(0, 0, 0, 0.15),
+        inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Touch en móviles */
+@media (hover: none) and (pointer: coarse) {
+    .btn:active {
+        transform: scale(0.97);
+        opacity: 0.9;
+    }
 }
 
 .btn-icon {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     stroke: currentColor;
-    stroke-width: 3;
+    stroke-width: 2.5;
     flex-shrink: 0;
-    transition: filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.5));
-    /* Iconos estáticos sin movimiento */
+    transition: transform 0.2s ease;
+    opacity: 0.9;
 }
 
 .btn-location {
     background: linear-gradient(
         135deg,
-        rgba(0, 51, 102, 1) 0%,
-        rgba(0, 71, 133, 1) 50%,
-        rgba(0, 51, 102, 1) 100%
+        rgba(0, 51, 102, 0.95) 0%,
+        rgba(0, 71, 133, 0.95) 50%,
+        rgba(0, 51, 102, 0.95) 100%
     );
     color: var(--color-white);
+    animation: btnPulseLocation 2.5s ease-in-out infinite;
 }
 
 .btn-location:hover {
     background: linear-gradient(
         135deg,
-        rgba(0, 71, 133, 1) 0%,
-        rgba(0, 102, 204, 1) 50%,
-        rgba(0, 71, 133, 1) 100%
+        rgba(0, 71, 133, 0.98) 0%,
+        rgba(0, 102, 204, 0.98) 50%,
+        rgba(0, 71, 133, 0.98) 100%
     );
 }
 
 .btn-confirm {
     background: linear-gradient(
         135deg,
-        rgba(255, 215, 0, 0.95) 0%,
-        rgba(255, 184, 0, 0.95) 50%,
-        rgba(255, 215, 0, 0.95) 100%
+        rgba(255, 215, 0, 0.98) 0%,
+        rgba(255, 200, 0, 0.98) 50%,
+        rgba(255, 215, 0, 0.98) 100%
     );
     color: var(--color-dark-blue);
-    border-color: rgba(255, 215, 0, 0.8);
-    text-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.3),
-        0 0 10px rgba(255, 255, 255, 0.5);
-    animation: btnMetallicGold 5s ease-in-out infinite;
-    background-image: 
-        linear-gradient(
-            90deg,
-            transparent 0%,
-            rgba(255, 255, 255, 0.2) 25%,
-            rgba(255, 255, 255, 0.5) 50%,
-            rgba(255, 255, 255, 0.2) 75%,
-            transparent 100%
-        ),
-        linear-gradient(
-            135deg,
-            rgba(255, 215, 0, 0.95) 0%,
-            rgba(255, 184, 0, 0.95) 50%,
-            rgba(255, 215, 0, 0.95) 100%
-        );
-    background-size: 400% 100%, 100% 100%;
-    background-position: -200% center, center;
+    border-color: rgba(255, 215, 0, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .btn-confirm:hover {
     background: linear-gradient(
         135deg,
-        rgba(255, 184, 0, 1) 0%,
+        rgba(255, 200, 0, 1) 0%,
         rgba(255, 215, 0, 1) 50%,
-        rgba(255, 184, 0, 1) 100%
+        rgba(255, 200, 0, 1) 100%
     );
     box-shadow: 
-        0 14px 36px rgba(255, 184, 0, 0.6),
-        0 7px 18px rgba(0, 0, 0, 0.45),
-        0 0 0 3px rgba(255, 255, 255, 0.85),
-        0 0 30px rgba(255, 215, 0, 0.65),
-        0 0 50px rgba(255, 184, 0, 0.35),
-        inset 0 2px 0 rgba(255, 255, 255, 0.35),
-        inset 0 -2px 0 rgba(0, 0, 0, 0.18);
-    border-color: rgba(255, 255, 255, 0.95);
-    color: var(--color-dark-blue);
-    animation: btnMetallicGold 4s ease-in-out infinite;
-    filter: brightness(1.15) contrast(1.1);
+        0 6px 16px rgba(255, 184, 0, 0.3),
+        0 3px 8px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 215, 0, 0.4);
+    animation-play-state: paused; /* Pausar animación en hover */
 }
 
-.btn-confirm:hover .btn-icon {
-    filter: drop-shadow(0 0 8px rgba(0, 51, 102, 0.8));
+/* Animación de pulso para botón de ubicación - sobresale hacia arriba */
+@keyframes btnPulseLocation {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        box-shadow: 
+            0 4px 12px rgba(0, 0, 0, 0.15),
+            0 2px 6px rgba(0, 0, 0, 0.1),
+            0 0 0 0 rgba(0, 102, 204, 0);
+    }
+    50% {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 
+            0 8px 20px rgba(0, 51, 102, 0.4),
+            0 4px 12px rgba(0, 0, 0, 0.2),
+            0 0 20px rgba(0, 102, 204, 0.3);
+    }
 }
 
-.btn-confirm:hover .btn-text {
-    text-shadow: 
-        0 2px 6px rgba(0, 0, 0, 0.4),
-        0 0 15px rgba(255, 255, 255, 0.8);
+/* Animación de pulso para botón de confirmación - sobresale con resplandor amarillo */
+@keyframes btnPulseConfirm {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        box-shadow: 
+            0 4px 12px rgba(0, 0, 0, 0.15),
+            0 2px 6px rgba(0, 0, 0, 0.1),
+            0 0 0 0 rgba(255, 215, 0, 0);
+    }
+    50% {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 
+            0 8px 20px rgba(255, 184, 0, 0.4),
+            0 4px 12px rgba(0, 0, 0, 0.2),
+            0 0 25px rgba(255, 215, 0, 0.4);
+    }
 }
 
+/* Pausar animación cuando el botón está en hover o active */
+.btn:hover,
+.btn:active,
+.btn:focus {
+    animation-play-state: paused;
+}
+
+/* Optimización para móviles */
 @media (max-width: 768px) {
     .action-buttons {
-        gap: var(--spacing-sm);
+        gap: var(--spacing-md);
+        padding: 0 var(--spacing-sm);
     }
     
     .btn {
-        padding: var(--spacing-lg) var(--spacing-2xl);
-        font-size: clamp(1rem, 4vw, 1.2rem);
-        min-height: 62px;
+        padding: var(--spacing-md) var(--spacing-xl);
+        font-size: clamp(0.9rem, 3.2vw, 1rem);
+        min-height: 52px;
         max-width: 100%;
+        border-radius: 14px;
+        font-weight: 600;
     }
     
     .btn-icon {
-        width: 22px;
-        height: 22px;
+        width: 18px;
+        height: 18px;
+        stroke-width: 2.5;
+    }
+}
+
+@media (max-width: 480px) {
+    .action-buttons {
+        gap: var(--spacing-sm);
+        padding: 0;
+    }
+    
+    .btn {
+        padding: var(--spacing-sm) var(--spacing-lg);
+        font-size: clamp(0.85rem, 3vw, 0.95rem);
+        min-height: 48px;
+        letter-spacing: 0.01em;
+    }
+    
+    .btn-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 360px) {
+    .btn {
+        padding: var(--spacing-xs) var(--spacing-md);
+        min-height: 44px;
+        font-size: clamp(0.8rem, 2.8vw, 0.9rem);
     }
 }
 

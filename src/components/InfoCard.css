@@ -8,6 +8,7 @@
     width: 100%;
     max-width: 280px;
     padding: var(--spacing-md, 0.75rem) var(--spacing-lg, 1rem);
+    margin: 0 auto;
     
     /* Fondo azul oscuro tenue - acorde a la invitación y móviles */
     background: linear-gradient(
@@ -138,7 +139,8 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 0 var(--spacing-xs, 0.25rem);
+    padding: 0;
+    margin: 0;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -146,6 +148,8 @@
     align-items: center;
     justify-content: center;
     gap: var(--spacing-xs, 0.25rem);
+    width: 100%;
+    flex: 1;
 }
 
 /* Estado resaltado permanente para la tarjeta de fecha */

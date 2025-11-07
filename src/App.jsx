@@ -41,6 +41,7 @@ function App() {
   const mainTitleRef = useRef(null);
   const wheelLoadingRef = useRef(null);
   const dateTimeSectionRef = useRef(null);
+  const actionButtonsRef = useRef(null);
 
   useEffect(() => {
     // GSAP animations
@@ -151,9 +152,11 @@ function App() {
         // Timeline principal de la animación
         const wheelAnimationTL = gsap.timeline();
         
-        // Función para crear huellas en tiempo real siguiendo a la rueda - mejor sincronizado
+        // Función para crear huellas en tiempo real siguiendo a la rueda - optimizado para móviles
         const createTracksFollowingWheel = (startX, endX, startTime, duration, trackY) => {
-          const steps = 18; // Más huellas para mejor seguimiento
+          // Reducir pasos en móviles para mejor rendimiento
+          const isMobile = window.innerWidth <= 768;
+          const steps = isMobile ? 10 : 15;
           const interval = duration / steps;
           
           for (let i = 0; i < steps; i++) {
@@ -265,6 +268,33 @@ function App() {
               dateCard.classList.add('date-card-highlighted');
             }
           }, null, '+=0.2');
+      }
+      
+      // ===== ANIMACIÓN DE BOTONES DE ACCIÓN =====
+      const actionButtons = actionButtonsRef.current;
+      if (actionButtons) {
+        const buttons = actionButtons.querySelectorAll('.btn');
+        
+        // Estado inicial: botones ocultos
+        gsap.set(buttons, {
+          opacity: 0,
+          y: 20,
+          scale: 0.95,
+          visibility: 'hidden'
+        });
+        
+        // Revelar botones después de las tarjetas (con delay)
+        gsap.to(buttons, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          visibility: 'visible',
+          duration: 0.6,
+          ease: 'power2.out',
+          stagger: 0.1,
+          delay: 0.4, // Aparecer después de las tarjetas
+          force3D: true
+        });
       }
     }
   }, []);
@@ -488,7 +518,7 @@ function App() {
           </section>
 
           {/* Action Buttons */}
-          <section className="action-buttons">
+          <section ref={actionButtonsRef} className="action-buttons">
             <a 
               href="https://www.google.com/maps/place/27%C2%B022'06.3%22S+65%C2%B034'22.4%22W/@-27.3684129,-65.5754654,17z/data=!3m1!4b1!4m4!3m3!8m2!3d-27.3684129!4d-65.5728905?entry=tts&g_ep=EgoyMDI1MTEwMi4wIPu8ASoASAFQAw%3D%3D&skid=452e6a84-d0e9-4db0-898d-3358513773ab" 
               target="_blank" 
