@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { InfoCard } from './components/InfoCard';
 import './App.css';
+import logoJdg from '../assets/images/logo-jdg (1).png';
 
 // Función para generar enlace de Google Calendar
 const createGoogleCalendarLink = () => {
@@ -524,7 +525,7 @@ function App() {
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
               </svg>
-              <span className="btn-text">Tocar para ver ubicación en Concepción</span>
+              <span className="btn-text">Tocar para ver ubicación</span>
             </a>
             <a 
               href="https://docs.google.com/forms/d/1llA_nhIqJKaJL9xOvp5rLFv-ZRnTSFdoeHD_g4a98Zg/viewform?edit_requested=true" 
@@ -548,7 +549,7 @@ function App() {
             >
               <div className="logo">
                 <img 
-                  src="/assets/images/logo-jdg.png" 
+                  src={logoJdg} 
                   alt="JDG Neumáticos" 
                   className="logo-image"
                   onError={(e) => {
