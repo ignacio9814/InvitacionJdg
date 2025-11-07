@@ -1,0 +1,134 @@
+═══════════════════════════════════════════════════════════════
+  🚀 INSTRUCCIONES PARA SUBIR A GITHUB Y NETLIFY
+═══════════════════════════════════════════════════════════════
+
+✅ PROYECTO LISTO PARA DESPLIEGUE
+   - Build verificado: ✓ Funciona correctamente
+   - Archivos configurados: ✓ .gitignore, netlify.toml, README.md
+   - Dependencias: ✓ Todas instaladas
+
+═══════════════════════════════════════════════════════════════
+  PASO 1: SUBIR A GITHUB
+═══════════════════════════════════════════════════════════════
+
+1. Abre PowerShell o Terminal en esta carpeta
+
+2. Inicializar Git (si no está inicializado):
+   git init
+
+3. Agregar todos los archivos:
+   git add .
+
+4. Hacer el primer commit:
+   git commit -m "Initial commit: Invitación digital JDG Neumáticos"
+
+5. Crear repositorio en GitHub:
+   - Ve a https://github.com
+   - Click en "New repository"
+   - Nombre: jdg-invitacion (o el que prefieras)
+   - NO marques "Add README" (ya lo tenemos)
+   - Click en "Create repository"
+
+6. Conectar y subir:
+   git remote add origin https://github.com/TU-USUARIO/jdg-invitacion.git
+   git branch -M main
+   git push -u origin main
+
+   (Reemplaza TU-USUARIO con tu usuario de GitHub)
+
+7. Actualizar package.json:
+   - Abre package.json
+   - Reemplaza "USERNAME" con tu usuario de GitHub en la línea del repository
+   - Guarda y haz commit:
+     git add package.json
+     git commit -m "Update repository URL"
+     git push
+
+═══════════════════════════════════════════════════════════════
+  PASO 2: DESPLEGAR EN NETLIFY
+═══════════════════════════════════════════════════════════════
+
+OPCIÓN A: Desde la Web (Más Fácil)
+
+1. Ve a https://www.netlify.com
+2. Inicia sesión con tu cuenta de GitHub
+3. Click en "Add new site" → "Import an existing project"
+4. Selecciona "GitHub" y autoriza Netlify
+5. Busca y selecciona tu repositorio "jdg-invitacion"
+6. Netlify detectará automáticamente:
+   - Build command: npm run build
+   - Publish directory: dist
+7. Click en "Deploy site"
+8. ¡Listo! Tu sitio estará en: https://random-name.netlify.app
+
+OPCIÓN B: Desde la Terminal
+
+1. Instalar Netlify CLI:
+   npm install -g netlify-cli
+
+2. Iniciar sesión:
+   netlify login
+
+3. Desplegar:
+   netlify deploy --prod
+
+═══════════════════════════════════════════════════════════════
+  VERIFICACIÓN POST-DESPLIEGUE
+═══════════════════════════════════════════════════════════════
+
+Después del despliegue, verifica:
+
+✓ El sitio carga correctamente
+✓ Las animaciones funcionan
+✓ Los enlaces de Google Calendar funcionan
+✓ Los botones de ubicación y confirmación funcionan
+✓ El logo con enlace a Instagram funciona
+✓ El diseño se ve bien en móviles
+
+═══════════════════════════════════════════════════════════════
+  ARCHIVOS IMPORTANTES
+═══════════════════════════════════════════════════════════════
+
+✓ .gitignore          - Archivos que NO se suben a GitHub
+✓ netlify.toml        - Configuración de Netlify
+✓ README.md           - Documentación del proyecto
+✓ DEPLOY.md           - Guía detallada de despliegue
+✓ package.json        - Dependencias y scripts
+
+═══════════════════════════════════════════════════════════════
+  COMANDOS ÚTILES
+═══════════════════════════════════════════════════════════════
+
+Ver estado de Git:
+  git status
+
+Agregar cambios:
+  git add .
+
+Hacer commit:
+  git commit -m "Descripción del cambio"
+
+Subir cambios:
+  git push
+
+Construir localmente:
+  npm run build
+
+Preview del build:
+  npm run preview
+
+═══════════════════════════════════════════════════════════════
+  NOTAS IMPORTANTES
+═══════════════════════════════════════════════════════════════
+
+• Cada vez que hagas git push, Netlify reconstruirá automáticamente
+• El archivo netlify.toml ya está configurado correctamente
+• Los assets deben estar en la carpeta public/
+• El build genera la carpeta dist/ que es lo que se despliega
+
+═══════════════════════════════════════════════════════════════
+
+Para más detalles, consulta el archivo DEPLOY.md
+
+¡Éxito con el despliegue! 🎉
+
